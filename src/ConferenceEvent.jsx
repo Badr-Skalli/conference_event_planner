@@ -86,22 +86,22 @@ const ConferenceEvent = () => {
     const ItemsDisplay = ({ items }) => {
         console.log(items);
         return <>
-            <div className="display_box_1">
+            <div className="display_box1">
                 {items.length === 0 && <p>No items selected</p>}
                 <table className="table_item_data">
-                    <thread>
+                    <thead>
                         <tr>
                             <th>Name</th>
                             <th>Unit cost</th>
                             <th>Quantity</th>
                             <th>Subtotal</th>
                         </tr>
-                    </thread>
+                    </thead>
                     <tbody>
                         {items.map((item, index) => (
                             <tr key={index}>
                                 <td>{item.name}</td>
-                                <td>{item.cost}</td>
+                                <td>${item.cost}</td>
                                 <td>
                                     {item.type === "meals" || item.numberOfPeople ? ` For ${numberOfPeople} people` : item.quantity}</td>
                                 <td>
@@ -290,7 +290,7 @@ const ConferenceEvent = () => {
                                 </div>
                                 <div className="meal_selection">
                                     {
-                                        mealsItems.map((item, index) => {
+                                        mealsItems.map((item, index) => (
                                             <div className="meal_item" key={index} style={{padding: 15}}>
                                                 <div className="inner">
                                                     <input type="checkbox" id={`meal_${index}` }
@@ -301,7 +301,7 @@ const ConferenceEvent = () => {
                                                 </div>
                                                 <div className="meal_cost">${item.cost}</div>
                                             </div>
-                                        })
+                                        ))
                                     }
                                 </div>
                                 <div className="total_cost">Total Cost: {mealsTotalCost}</div>
